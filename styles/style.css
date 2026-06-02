@@ -1,5 +1,317 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  color: var(--text-color);
+  font-family: var(--main-font);
+  font-size: var(--text-size);
+  line-height: var(--text-line-height);
+  background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before,
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  pointer-events: none;
+}
+
+.decorated-zone::before {
+  inset-block-start: var(--page-padding);
+  inset-inline-end: var(--page-padding);
+  border-block-start: 1px solid var(--content-title-color);
+  border-inline-end: 1px solid var(--content-title-color);
+}
+
+.decorated-zone::after {
+  inset-block-end: var(--page-padding);
+  inset-inline-start: var(--page-padding);
+  border-block-end: 1px solid var(--content-title-color);
+  border-inline-start: 1px solid var(--content-title-color);
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  min-block-size: 668px;
+  block-size: 100vh;
+  padding: var(--page-padding);
+}
+
+.header__rec {
+  position: absolute;
+  inset-block-start: var(--page-padding);
+  inset-inline-end: calc(var(--page-padding) + 29px);
+  display: var(--rec-display);
+  color: var(--accent-color);
+  line-height: 25px;
+  text-transform: uppercase;
+}
+
+.header__rec::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline-end: -19px;
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 4px 2px var(--accent-color);
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: center;
+}
+
+.header__theme-menu-list {
+  display: grid;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  min-inline-size: 70px;
+  border: 1px solid transparent;
+  padding: 1px 13px 3px;
+  color: var(--content-title-color);
+  line-height: 1;
+  text-align: center;
+  text-transform: lowercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--accent-color-transparent);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end-color: var(--content-title-color);
+}
+
+.header__theme-menu-button_active {
+  border-color: var(--content-title-color);
+  pointer-events: none;
+}
+
+.page-title {
+  justify-self: start;
+  align-self: center;
+  color: var(--main-title-color);
+  font-weight: 700;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 0.825;
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.header__description {
+  align-self: center;
+  justify-self: end;
+  inline-size: 100%;
+  font-weight: 700;
+}
+
+.title-decor {
+  color: var(--decor-title-color);
+  background-color: var(--accent-color);
+}
+
+.content {
+  display: grid;
+  gap: var(--section-gap);
+  padding: 40px var(--page-padding);
+}
+
+.content__section {
+  display: grid;
+  gap: 20px;
+}
+
+.content__section-title {
+  color: var(--content-title-color);
+  font-weight: 700;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.content__section-list {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  display: grid;
+  gap: 10px;
+}
+
+.card__title,
+.card__subtitle {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.card__title {
+  font-weight: 700;
+}
+
+.card__subtitle {
+  font-weight: 400;
+}
+
+.card__list {
+  display: grid;
+  gap: 20px;
+}
+
+.card__list-item {
+  display: grid;
+  gap: 10px;
+}
+
+.content__link {
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.content__link:hover {
+  border-block-end: 1px solid currentColor;
+}
+
+.content__link:focus {
+  outline: none;
+}
+
+.content__link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
+}
+
+.gallery {
+  gap: 10px;
+}
+
+.gallery__title {
+  font-weight: 700;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.gallery__image {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  display: grid;
+  place-items: center;
+  min-block-size: 668px;
+  block-size: 100vh;
+  padding: var(--page-padding);
+}
+
+.footer__title {
+  color: var(--main-title-color);
+  font-weight: 700;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 0.825;
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+@media (width >= 768px) {
+  .header__theme-menu {
+    align-self: center;
+  }
+
+  .page-title {
+    margin-inline-start: calc(-1 * var(--page-padding));
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__description {
+    inline-size: 50%;
+  }
+
+  .content {
+    padding-block: 60px;
+  }
+
+  .content__section_type_twocolumn {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .content__section_type_cards .content__section-title {
+    inline-size: calc((100% - 40px) / 3);
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      'sunset sunset ice-cream'
+      'tape books ice-cream'
+      'tape street street';
+    gap: 20px;
+  }
+
+  .gallery__title {
+    grid-column: 1 / -1;
+  }
+
+  .gallery__image_type_sunset {
+    grid-area: sunset;
+  }
+
+  .gallery__image_type_ice-cream {
+    grid-area: ice-cream;
+  }
+
+  .gallery__image_type_tape {
+    grid-area: tape;
+  }
+
+  .gallery__image_type_books {
+    grid-area: books;
+  }
+
+  .gallery__image_type_street {
+    grid-area: street;
+  }
+
+  .gallery__image_type_ice-cream,
+  .gallery__image_type_tape {
+    block-size: 100%;
+  }
+
+  .footer__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+@media (width >= 1024px) {
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+  }
+
+  .header__theme-menu-list {
+    grid-template-columns: repeat(3, min-content);
+  }
+
+  .content__section-list_type_cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
